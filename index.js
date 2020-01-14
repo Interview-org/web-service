@@ -43,7 +43,8 @@ exports.handler = (event, context, callback) => {
     //Populate protection json required by github api to update the branch protection.
     const payloadForProtectBranch = JSON.stringify(protectBranchItems);
     
-    
+    const githubToken = process.env.githubToken;
+    console.log(githubToken);
     // create header to send PUT to github api
     /* Please note, Accept header is hard coded as per github documentation.
        see thread here : https://github.com/octokit/rest.js/issues/1368
@@ -52,7 +53,7 @@ exports.handler = (event, context, callback) => {
        for more information , please see https://developer.github.com/v3/repos/branches/#update-branch-protection */
     const headers = {
         'User-Agent':repoName,
-        //"Authorization": 'Token d61f46105d3cd961dd10d9d92396463bcf7db42d',
+        "Authorization": 'Token '+githubToken,
         "Content-Type": 'application/json',
         "Accept":'application/vnd.github.luke-cage-preview+json'
     };
@@ -68,9 +69,8 @@ exports.handler = (event, context, callback) => {
 
 
     const req = https.request(options, res => {
-        console.log("statusCode: ${res.statusCode}");
         res.on('data', d => {
-            process.stdout.write(d);
+            console.log(d);
           });
     });
 
@@ -92,9 +92,8 @@ exports.handler = (event, context, callback) => {
     };
     
     const req1 = https.request(options1, res1 => {
-        console.log("statusCode: ${res1.statusCode}");
         res1.on('data', d => {
-            process.stdout.write(d);
+            console.log(d);
           });
     });
 
