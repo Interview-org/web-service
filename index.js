@@ -52,7 +52,7 @@ exports.handler = (event, context, callback) => {
        for more information , please see https://developer.github.com/v3/repos/branches/#update-branch-protection */
     const headers = {
         'User-Agent':repoName,
-        "Authorization": 'Token d61f46105d3cd961dd10d9d92396463bcf7db42d',
+        //"Authorization": 'Token d61f46105d3cd961dd10d9d92396463bcf7db42d',
         "Content-Type": 'application/json',
         "Accept":'application/vnd.github.luke-cage-preview+json'
     };
