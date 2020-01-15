@@ -4,3 +4,5 @@ This web service listens for organization events when a repository is created. W
 
 ## Architecture Overview
 ![Architecture Overview](https://github.com/Interview-org/web-service/blob/master/architecture.jpg)
+
+### 1.) When a user create/delete or update a  repository in the organization , using a webhook, a post is sent to webservice endpoint.
