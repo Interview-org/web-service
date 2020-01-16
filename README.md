@@ -15,6 +15,19 @@ This web service listens for organization events when a repository is created. W
 
 5.) Github users can see the changes of step 2, 3 and 4 on the github UI.
 
+## Modules Overview
+
+This project has 5 .js file. Index.js is the main node file that executes the logic and implement the webservice. The other 4 js modules are required to execute the index.js code.Please find below the module description.
+
+Module | Description
+------------ | -------------
+index.js| Its the main mode module which contains the main logic and handling of the webservice.It inherits all the other module as soon this runs
+branch-protection-payload.js| Content in the second column
+issue-creation-payload.js| Content from cell 2
+headers.js| Content in the second column
+options.js| Content in the second column
+
+
 ## How to run the web service
 
 1.) Use the existing service
