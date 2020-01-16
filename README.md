@@ -5,18 +5,26 @@ This web service listens for organization events when a repository is created. W
 ## Architecture Overview
 ![Architecture Overview](https://github.com/Interview-org/web-service/blob/master/architecture.jpg)
 
- 1.) When a user create/delete or update a  repository in the organization , using a webhook, a post is sent to webservice endpoint.
+ 1.) When a github user create/delete or update a  repository in the organization , using a webhook, a post is sent to webservice endpoint.
  
 2.) Api gateway triggers the AWS lambda functions which process the post request.
 
-3.) If a new repository was created , then a lambda function would triggers a PUT request to Github api with update branch protection to make the master branch portected.
+3.) If a new repository was created , then lambda function would triggers a PUT request to Github api with update branch protection to make the master branch in recently created repository as protected.
 
-4.) After 3 step PUT request is succesfull, it triggers POST request to github api for issue comments and create a new issue on the repository which was created in step 1.
+4.) If step 3 is completed succesfully, it triggers POST request to github api for issue comments and create a new issue on the new repository and notify the user with protected branch attributes. Incase there is an error in step 3, error message is logged and this step is not executed.
 
-5.) Github users can see the changes of step 2, 3 and 4 on the github UI if it navigates through the UI.
+5.) Github users can see the changes of step 2, 3 and 4 on the github UI.
 
 ## How to run the web service
 
+1.) Use the existing service
+
+If someone want to use the existing webservice , then please add me in your github org , and use the below mentioned web service URL in the ORG webhhooks.You need to add me to your org because this webservice uses my github personal access token.If you want to use your own creditinals, then you can run the same code in AWS lambda and use your own githubtoken ( see section below of using the code to create your web service.)
+
+    https://93lj2cittc.execute-api.eu-west-2.amazonaws.com/test/branchtest
+
+
+2.) Use the code in this repository to create your own service.
 If someone want to use the existing webservice , then please add me in your github org , and use the follwoing web service URL in the ORG webhhooks :
 
 https://93lj2cittc.execute-api.eu-west-2.amazonaws.com/test/branchtest
