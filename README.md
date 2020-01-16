@@ -32,24 +32,21 @@ options.js| This module contains the options object required for http request.
 
 1.) Use the existing service
 
-If someone want to use the existing webservice , then please add me in your github org (Username : github-solution-architect), and use the below mentioned web service URL in the ORG webhhooks.You need to add me to your org because this webservice uses my github personal access token.If you want to use your own creditinals, then you can run the same code in AWS lambda and use your own githubtoken ( see section below of using the code to create your web service.)
+* If someone want to use the existing webservice , then please add me in your github org (Username : github-solution-architect), and use the below mentioned web service URL in the ORG webhhooks.You need to add me to your org because this webservice uses my github personal access token.If you want to use your own creditinals, then you can run the same code in AWS lambda and use your own githubtoken ( see section below of using the code to create your web service.)
 
     https://93lj2cittc.execute-api.eu-west-2.amazonaws.com/test/branchtest
 
 
 2.) Use the code in this repository to create your own service.
 
-If you want to create your own webservice, then please follow the following steps :
-
-prerequestie :
-
-* How to create API gateway and connect to AWS lambda function (https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-lambda-integration.html)
-
-* create AWS Lambda function, import the git repository containing all the node modules required to run the lambda function.
-* create personal api token for your github user
-* Update the enviornmental variable for AWS lambda function with key value as "githubToken" : your perosnal github token
-* Create APIgateway on AWS for Post request
-* Goto Organization setting on your github account > Goto Webhooks and in the URl, add the Apigateway URL
+* Create an AWS lambda function and import the code from this repository.If you are new to AWS lambdas , check the developer's guide [here](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+* Create enviornment variable for this AWS lambda and replace it with githubToken parameter in headers.js module.( this token can be found under your github porfile setting page. for more information on generating github token, [check here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line))
+* Create an AWS apigateway with post resource.
+* Connect AWS lambda function with apigateway such that it is triggered when post is recieved.You can see a good example of AWS lambda with AWS apigateway on this [link](https://www.baeldung.com/aws-lambda-api-gateway)
+* Deploy Apigateway and note down the apigateway URL.
+* Goto your github's organization settings, webhooks section and paste the URL in the webhook.
+* Create a new repository and check the status of the master.
 * Relax and enjoy the magic of Automation
+
 
 
