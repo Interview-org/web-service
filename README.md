@@ -32,17 +32,12 @@ options.js| This module contains the options object required for http request.
 
 1.) Use the existing service
 
-If someone want to use the existing webservice , then please add me in your github org , and use the below mentioned web service URL in the ORG webhhooks.You need to add me to your org because this webservice uses my github personal access token.If you want to use your own creditinals, then you can run the same code in AWS lambda and use your own githubtoken ( see section below of using the code to create your web service.)
+If someone want to use the existing webservice , then please add me in your github org (Username : github-solution-architect), and use the below mentioned web service URL in the ORG webhhooks.You need to add me to your org because this webservice uses my github personal access token.If you want to use your own creditinals, then you can run the same code in AWS lambda and use your own githubtoken ( see section below of using the code to create your web service.)
 
     https://93lj2cittc.execute-api.eu-west-2.amazonaws.com/test/branchtest
 
 
 2.) Use the code in this repository to create your own service.
-If someone want to use the existing webservice , then please add me in your github org , and use the follwoing web service URL in the ORG webhhooks :
-
-https://93lj2cittc.execute-api.eu-west-2.amazonaws.com/test/branchtest
-
-Then you will able to automate the branch protection with new issue creation having branch protection attributes.
 
 If you want to create your own webservice, then please follow the following steps :
 
