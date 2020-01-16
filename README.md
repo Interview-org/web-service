@@ -22,10 +22,10 @@ This project has 5 .js file. Index.js is the main node file that executes the lo
 Module | Description
 ------------ | -------------
 index.js| Its the main mode module which contains the main logic and handling of the webservice.It inherits all the other module as soon this runs
-branch-protection-payload.js| Content in the second column
-issue-creation-payload.js| Content from cell 2
-headers.js| Content in the second column
-options.js| Content in the second column
+branch-protection-payload.js| This module contains json payload structure for updating branch protection.
+issue-creation-payload.js| This module contains json payload structure for creating issues for a repository.
+headers.js| This module contains the header object required for http request.
+options.js| This module contains the options object required for http request.
 
 
 ## How to run the web service
