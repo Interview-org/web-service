@@ -4,7 +4,8 @@ jobs:
     machine:
       image: ubuntu-2004:202201-02
     steps:
-    - run: echo "do something"
+    - run: ls
+    
 workflows:
   build_and_test:
     jobs:
