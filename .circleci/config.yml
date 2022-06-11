@@ -26,7 +26,10 @@ jobs:
         command: |
           cd codeql && mkdir temp
           ./codeql database analyze ../codeql-dbs/repo-db javascript-code-scanning.qls --format=sarif-latest --output=./temp/results-js.sarif
-    
+    - run:
+        name: Check Results Of Sarif File
+        command: |
+          cat temp/results-js.sarif    
 workflows:
   build_and_test:
     jobs:
