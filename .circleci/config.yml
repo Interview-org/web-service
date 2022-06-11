@@ -29,7 +29,9 @@ jobs:
     - run:
         name: Check Results Of Sarif File
         command: |
-          cat temp/results-js.sarif    
+          pwd
+          ls
+          cat ../temp/results-js.sarif    
 workflows:
   build_and_test:
     jobs:
