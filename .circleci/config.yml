@@ -1,10 +1,31 @@
+orbs:
+  node: circleci/node@4.5.0
+
 version: 2.1
 jobs:
   build:
     machine:
       image: ubuntu-2004:202201-02
     steps:
-    - run: ls
+    - checkout: { path: "my-app" } # checkout codebase in own directory, separate from codeql cli bundle so it does not analyze itself
+    - node/install
+    - run:
+        name: Download CodeQL CLI
+        command: |
+          wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz -O codeql-bundle-linux64.tar.gz
+          tar xzvf codeql-bundle-linux64.tar.gz
+          rm codeql-bundle-linux64.tar.gz
+          export PATH=$(pwd)/codeql:$PATH
+    - run:
+        name: Create CodeQL Database
+        command: |
+          mkdir codeql-dbs
+          ./codeql/codeql database create ./codeql-dbs/repo-db --language=javascript --source-root=./my-app
+    - run:
+        name: Analyze CodeQL Database
+        command: |
+          cd codeql && mkdir temp
+          ./codeql database analyze ../codeql-dbs/repo-db javascript-code-scanning.qls --format=sarif-latest --output=./temp/results-js.sarif
     
 workflows:
   build_and_test:
