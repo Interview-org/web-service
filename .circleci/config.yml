@@ -29,9 +29,7 @@ jobs:
     - run:
         name: Check Results Of Sarif File
         command: |
-          pwd
-          ls
-          cat ../temp/results-js.sarif    
+          cat codeql/temp/results-js.sarif    
 workflows:
   build_and_test:
     jobs:
